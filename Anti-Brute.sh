@@ -3,10 +3,12 @@ read -p "Enter a new SSH port number: " new_port
 if [[ "$new_port" =~ ^[0-9]+$ ]]; then
     # Update the SSH configuration file
     sudo sed -i "s/^Port .*/Port $new_port/" /etc/ssh/sshd_config
-
-sudo sed -i 's/^#*PasswordAuthentication .*/PasswordAuthentication no/' /etc/ssh/sshd_config
-sudo systemctl restart ssh
-
+    sudo sed -i 's/^#*PasswordAuthentication .*/PasswordAuthentication no/' /etc/ssh/sshd_config
+    sudo systemctl restart ssh
+    echo "SSH port has been updated to $new_port."
+else
+    echo "Invalid input. Please enter a positive integer."
+fi
 # Configure iptables to limit SSH login attempts
 echo "Configuring iptables rules..."
 sudo iptables -N SSH_WHITELIST
