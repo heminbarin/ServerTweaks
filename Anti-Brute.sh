@@ -25,5 +25,5 @@ sudo systemctl enable --now fail2ban
 echo "Installing DenyHosts..."
 sudo apt install denyhosts
 sudo systemctl enable --now denyhosts
-
 echo "Configuration completed."
+exit
