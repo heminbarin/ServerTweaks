@@ -20,10 +20,4 @@ sudo iptables -A INPUT -p tcp --dport $new_port -m recent --update --seconds 60 
 echo "Installing Fail2ban..."
 sudo apt install fail2ban
 sudo systemctl enable --now fail2ban
-
-# Install and enable DenyHosts
-echo "Installing DenyHosts..."
-sudo apt install denyhosts
-sudo systemctl enable --now denyhosts
-echo "Configuration completed."
 exit
